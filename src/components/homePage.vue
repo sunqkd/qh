@@ -3,8 +3,8 @@
 		<!-- 头部部分 -->
 		<div class="homebg">
 			<!-- 背景图 -->
-			<img src="/static/img/bg1.png" alt="" class="homeTitlebg">
-			<img src="/static/img/titleName.png" alt="" class="homeText">
+			<img src="./img/bg1.png" alt="" class="homeTitlebg">
+			<img src="./img/titleName.png" alt="" class="homeText">
 			<!-- 单位 -->
 			<div class="unit">
 				<span>指导单位：前海管理局</span>
@@ -127,7 +127,61 @@
 			</div>
 			<div class="headlineright" style="width:73.6%;margin-top:46px">· 系列路演日程 ·</div>
 			<div class="series" style="clear:both">
-				<div class="">
+				<div class="tableheader">
+					<div>
+						序号
+					</div>
+					<div>
+						活动名称
+					</div>
+					<div>
+						拟定举办时间
+					</div>
+				</div>
+				<div class="tableBody" v-for="(item,index) in active" :key="index">
+					<div>
+						{{index+1}}
+					</div>
+					<div>
+						{{item.name}}
+					</div>
+					<div>
+						{{item.time}}
+					</div>
+				</div>
+			</div>
+			<!-- 组委会介绍 -->
+			<div class="headlineleft" style="width:73.6%;margin-top:48px">
+				· 组委会介绍 ·
+			</div>
+			<div class="committee">
+				前海科控是深圳市前海管理局全资直属的三家平台公司之一，通过聚焦科创产业空间运营、高端科技专业服务、科创及文创产业投资等核心业务，努力打造前海科创产业投资运营服务平台，快速推动前海科技创新产业集聚发展。
+				<br/><br/>
+				第一路演是领先的人工智能路演平台，主要为新兴成长企业、VC/PE投后项目、产业园区项目、双创赛事项目提供融资路演服务，参与策划深圳金博会、高交会等大型活动，平台与主流投资机构紧密合作，基于大数据及人工智能算法对机构投资风格的精准画像，为路演企业精准匹配潜在投资者。
+			</div>
+			<div class="signup">
+				<ul>
+					<li>
+						<span>路演项目</span>
+						<span>报名 > </span>
+					</li>
+					<li>
+						<span>嘉宾评委</span>
+						<span>报名 > </span>
+					</li>
+					<li>
+						<span>前海产业</span>
+						<span>报名 > </span>
+					</li>
+					<li>
+						<span>媒体/商务</span>
+						<span>合作 > </span>
+					</li>
+				</ul>
+			</div>
+			<!-- 路演报名表单 -->
+			<div class="singupFormContain">
+				<div class="singupForm">
 
 				</div>
 			</div>
@@ -137,12 +191,14 @@
 
 <script>
 import people from './people.js';
+import active from './active.js';
 
 export default {
 	name: 'homePage', // 主页
 	data () {
 		return {
 			people:people,
+			active:active,
 			msg: 'Welcome to Your homePage'
 		}
 	},
@@ -159,6 +215,7 @@ export default {
 	.homePage{
 		width:100%;
 		height:auto;
+		background-color:#01040D;
 		.homebg{
 			width:100%;
 			position:relative;
@@ -193,9 +250,9 @@ export default {
 		}
 		.homeBody{
 			width:100%;
-			height:3070px;
-			background:url('/static/img/bg2.png') no-repeat;
-			background-size: cover;
+			// min-height:3070px;
+			background:url('./img/bg2.png');
+			background-size:cover;
 			background-color:#01040D;
 			position:relative;
 			top:-85px;
@@ -348,9 +405,108 @@ export default {
 				width:100%;
 				padding:25px 16px 0 16px;
 				box-sizing: border-box;
-				height:20px;
-				background:pink;
+				color:rgba(132,189,255,1);
+				line-height:16px;
+				.tableheader{
+					height:30px;
+					width:100%;
+					display:flex;
+					margin-bottom:1px;
+					div{
+						height:100%;
+						background:rgba(59,150,210,0.15);
+						font-size:12px;
+						display:flex;
+						align-items: center;
+						&:nth-child(1){
+							width:44px;
+							margin-right: 1px;
+							justify-content: center;
+						}
+						&:nth-child(2){
+							padding-left:10px;
+							box-sizing: border-box;
+							width:calc(100% - 140px);
+							margin-right: 1px;
+						}
+						&:nth-child(3){
+							width:92px;
+							justify-content: center;
+						}
+					}
+				}
+				.tableBody{
+					height:52px;
+					width:100%;
+					display:flex;
+					margin-bottom:1px;
+					div{
+						height:100%;
+						background:rgba(59,150,210,0.15);
+						font-size:12px;
+						display:flex;
+						align-items: center;
+						&:nth-child(1){
+							width:44px;
+							margin-right: 1px;
+							justify-content: center;
+						}
+						&:nth-child(2){
+							padding-left:10px;
+							box-sizing: border-box;
+							width:calc(100% - 140px);
+							margin-right: 1px;
+						}
+						&:nth-child(3){
+							width:92px;
+							justify-content: center;
+						}
+					}
+				}
 			}
+			.committee{
+				width:100%;
+				padding:32px 24px 0 24px;
+				box-sizing: border-box;
+				color:rgba(98,178,232,0.8);
+				line-height:22px;
+				font-size:14px;
+			}
+			.signup{
+				width:100%;
+				margin-top:50px;
+				padding:0 24px;
+				box-sizing: border-box;
+				ul{
+					width:100%;
+					display:flex;
+					align-items: center;
+					justify-content: space-between;
+					height:80px;
+					li{
+						width:70px;
+						height:100%;
+						background:url('./img/db.png');
+						background-size: cover;
+						display:flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						font-size:13px;
+						color:rgba(255,255,255,1);
+						line-height:18px;
+					}
+				}
+			}
+			.singupFormContain{
+				width:100%;
+				padding:0 16px;
+				box-sizing: border-box;
+				.singupForm{
+
+				}
+			}
+			
 		}
 	}
 </style>
