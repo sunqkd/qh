@@ -98,7 +98,13 @@
                     downloadExcelType:'0'
                 }).then((res)=>{
                     if(res.data.status == 1){
+                        // if(window.webkit){
+                        //     window.location.href = "itms-services://?action=download-manifest&url=" + res.data.data.downloadUrl
+                        // }else{
+
+                        // }
                         window.location.href = res.data.data.downloadUrl;
+                        
                     }else{
                         Toast({
                             message: '下载失败',
