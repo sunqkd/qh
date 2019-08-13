@@ -8,7 +8,7 @@
             <ul class="buttonContain">
                 <li class="buttonItem" v-for="(item,index) in ccData" :key="index">
                     <span>{{item.roadShowName}}</span>
-                    <div class="radiocontain">
+                    <div class="radiocontainsingle">
                         <input type="radio" name="drone" :value="item.roadShowName" :ids="item.id">
                         <i></i>
                     </div>
@@ -110,7 +110,7 @@
                     align-items: center;
                     color:rgba(255,255,255,1);
                     font-size: 14px;
-                    .radiocontain{
+                    .radiocontainsingle{
                         position:absolute;
                         display:flex;
                         align-items: center;
