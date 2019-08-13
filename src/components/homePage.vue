@@ -332,7 +332,7 @@ export default {
 				})
 				return;
 			}
-			if(!this.form.phone ||  !/(^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$)/.test(this.form.phone)){
+			if(!this.form.phone){
 				Toast({
 					message: '手机号为空或者手机号格式不正确',
 					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
@@ -409,14 +409,14 @@ export default {
 					wx.ready(function(){
 						// 朋友圈分享
 						wx.onMenuShareTimeline({
-							title: "前海”一带一路“国际路演中心官方报名入口-新一代信息技术专场路演邀请函",
+							title: "前海 “一带一路” 国际路演中心官方报名入口-新一代信息技术专场路演邀请函",
 							link: window.location.href,
 							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
 						})
 						// 分享给朋友
 						wx.onMenuShareAppMessage({
-							title: "前海”一带一路“国际路演中心官方报名入口-新一代信息技术专场路演邀请函",
-							desc: "路演时间：8月20日 路演地点：前海深港青年梦工厂 智汇全球·追梦前海>>",
+							title: "前海“一带一路”国际路演中心官方报名入口-新一代信息技术专场路演邀请函",
+							desc: " 路演时间：8月20日 路演地点：前海深港青年梦工厂 智汇全球·追梦前海>> ",
 							link: window.location.href,
 							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
 						})
