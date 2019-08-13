@@ -98,7 +98,7 @@
                     downloadExcelType:'0'
                 }).then((res)=>{
                     if(res.data.status == 1){
-                        window.open(res.data.data.downloadUrl)
+                        window.location.href = res.data.data.downloadUrl;
                     }else{
                         Toast({
                             message: '下载失败',
