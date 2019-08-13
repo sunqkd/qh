@@ -78,6 +78,9 @@
 
             }
         },
+        created(){
+            this.setScrollTop(0);
+        },
         methods:{
             download(){
                 this.axios.post(this.domain + '/vc/qhRoadShow/downloadExcel',{
@@ -93,12 +96,18 @@
 					    })
                     }
                 })
-            }
+            },
+            setScrollTop(scroll_top) {  
+    　　　　　　 document.documentElement.scrollTop = scroll_top;  
+    　　　　　　 window.pageYOffset = scroll_top;  
+    　　　　　　 document.body.scrollTop = scroll_top;  
+　　　　     }
         }
     }
 </script>
 <style lang="scss">
     .roadshow{
+        height:auto;
         width:100%;
         box-sizing: border-box;
         background:url('./img/bg3.png');

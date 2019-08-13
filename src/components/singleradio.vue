@@ -27,7 +27,7 @@
             }
         },
         created(){
-            ModalHelper.afterOpen();
+            // ModalHelper.afterOpen();
             this.getCC();
         },
         methods:{
@@ -60,7 +60,7 @@
             Toast
         },
         destroyed(){
-            ModalHelper.beforeClose();
+            // ModalHelper.beforeClose();
         }
         
     }

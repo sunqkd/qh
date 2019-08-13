@@ -2,14 +2,14 @@
     <div class="workFlow">
         <div class="workFlowContain">
             <div class="buttonClick">
-                <span>取消</span>
-                <span>确定</span>
+                <span @click="cancel()">取消</span>
+                <span @click="certain()">确定</span>
             </div>
             <ul class="buttonContain">
-                <li class="buttonItem" v-for="i in 20">
-                    <span>44464654</span>
+                <li class="buttonItem" v-for="(item,index) in ccData" :key="index">
+                    <span>{{item.roadShowName}}</span>
                     <div class="radiocontain">
-                        <input type="checkbox" name="droneCheck">
+                        <input type="checkbox" name="droneCheck" :value="item.roadShowName" :ids="item.id">
                         <i></i>
                     </div>
                 </li>
@@ -18,7 +18,43 @@
     </div>
 </template>
 <script>
-
+    export default{
+        data(){
+            return {
+                ccData:[],
+                domain:'https://test1.dyly.com',
+            }
+        },
+        created(){
+            this.getCC();
+        },
+        methods:{
+            getCC(){ // 获取数据
+                this.axios.post(this.domain+'/vc/qhRoadShow/getQhRoadShowList',{
+                    "language":0
+                }).then((res)=>{
+                    if(res.data.status == 1){
+                        this.ccData = res.data.data;
+                    }
+                })
+            },
+            cancel(){ // 取消
+                this.$emit('input',false);
+            },
+            certain(){ // 确定
+                this.show();
+            },
+            show(){
+                var obj = document.getElementsByName("droneCheck");
+                var check_val = [];
+                for(var k in obj){
+                    if(obj[k].checked)
+                        check_val.push({roadShowName:obj[k].value,id:obj[k].getAttribute('ids') });
+                }
+                this.$emit('checkBoxclick',check_val);
+            }
+        }
+    }
 </script>
 <style lang="scss">
     .workFlow{

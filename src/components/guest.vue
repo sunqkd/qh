@@ -41,10 +41,18 @@
         <div class="singupFormContain" style="margin-top:68px;">
             <div class="singupForm">
                 <span class="signtitle">· 嘉宾团报名 ·</span>
-                <div class="radioSingle">
+                <div class="radioSingle" @click="changeall()">
                     <span>选择点评场次（多选）</span>
                     <span> > </span>
                 </div>
+                <!-- 选中的项目 -->
+
+                <div class="projectItem">
+                    <span v-for="(item,index) in checkData" :key="index">
+                        {{item.roadShowName}}
+                    </span>
+                </div>
+                
                 <input type="text" placeholder="姓名">
                 <input type="text" placeholder="公司名称">
                 <input type="text" placeholder="职位">
@@ -57,15 +65,25 @@
         <div class="download" style="margin-top:34px;">
             <span @click="download()">下载嘉宾评委登记表</span>
         </div>
+
+        <checkradio v-if="checkFlag" v-model="checkFlag" @checkBoxclick="checkBoxclick"></checkradio>
     </div>
 </template>
+
 <script>
     import { Toast } from 'mint-ui';
+    import checkradio from './checkradio';
+
     export default {
         data(){
             return {
-                domain:'https://test1.dyly.com'
+                domain:'https://test1.dyly.com',
+                checkFlag:false,
+                checkData:[],
             }
+        },
+        created(){
+            this.setScrollTop();
         },
         methods:{
             download(){
@@ -81,7 +99,23 @@
 					    })
                     }
                 })
-            }
+            },
+            changeall(){ // 
+                this.checkFlag = true;
+            },
+            checkBoxclick(data){ // 多选方法
+                this.checkData = data;
+                console.log(data);
+                this.checkFlag = false;
+            },
+            setScrollTop(scroll_top) {  
+    　　　　　　 document.documentElement.scrollTop = scroll_top;  
+    　　　　　　 window.pageYOffset = scroll_top;  
+    　　　　　　 document.body.scrollTop = scroll_top;  
+　　　　     }
+        },
+        components:{
+            checkradio
         }
     }
 </script>
@@ -92,5 +126,12 @@
         background-size:cover;
         background-color:#01040D;
         padding-bottom:50px;
+    }
+    .projectItem{
+        color:#ffffff;
+        font-size:14px;
+        span{
+            display:block;
+        }
     }
 </style>
