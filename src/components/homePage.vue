@@ -204,13 +204,18 @@
 				</div>
 			</div>
 		</div>
+		<!-- 单选 -->
+		<!-- <singleradio></singleradio> -->
+		<!-- <checkradio></checkradio> -->
 	</div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 import people from './people.js';
 import active from './active.js';
-
+import singleradio from './singleradio';
+import checkradio from './checkradio';
 export default {
 	name: 'homePage', // 主页
 	data () {
@@ -220,12 +225,30 @@ export default {
 			msg: 'Welcome to Your homePage'
 		}
 	},
+	created(){
+		ModalHelper.afterOpen();
+	},
+	mounted(){
+		Toast({
+			message: '操作成功',
+			iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+		});
+	},
 	methods:{
 		change(){ // 中英文切换
 			let locale = this.$i18n.locale;
 			locale === 'zh' ? this.$i18n.locale = 'en' : this.$i18n.locale = 'zh'
 		}
 	},
+
+	components:{
+		"singleradio":singleradio,
+		"checkradio":checkradio,
+		"Toast":Toast
+	},
+	destroyed(){
+        ModalHelper.beforeClose();
+    }
 	
 }
 </script>

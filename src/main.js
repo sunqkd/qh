@@ -4,7 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import VueI18n from 'vue-i18n'
+import VueI18n from 'vue-i18n';
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css'; 
+Vue.use(Mint);
 Vue.use(VueI18n);
 
 // 使用多文件管理不同的语言是一个好习惯：
