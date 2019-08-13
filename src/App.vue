@@ -202,4 +202,12 @@ export default {
 		border-bottom: 1px solid rgba(65,179,243,1);
 	}
 }
+.projectItem{
+	color:#ffffff;
+	font-size:14px;
+	margin-bottom: 10px;
+	span{
+		display:block;
+	}
+}
 </style>

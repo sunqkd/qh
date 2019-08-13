@@ -2,7 +2,7 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-const domain='http://10.10.5.67:8086'
+// const domain='http://10.10.5.67:8086'
 
 const path = require('path')
 
@@ -12,7 +12,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    // proxyTable: {},
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -36,22 +36,22 @@ module.exports = {
     cacheBusting: true,
 
     cssSourceMap: true,
-    proxyTable: {
-      '/vc': {
-          target: domain,
-          changeOrigin: true,
-          pathRewrite: {
-            '^/vc': '/vc'
-          }
-      },
-      '/banner': {
-          target: domain,
-          changeOrigin: true,
-          pathRewrite: {
-            '^/banner': '/banner'
-          }
-      },
-    }
+    // proxyTable: {
+    //   '/vc': {
+    //       target: domain,
+    //       changeOrigin: true,
+    //       pathRewrite: {
+    //         '^/vc': '/vc'
+    //       }
+    //   },
+    //   '/banner': {
+    //       target: domain,
+    //       changeOrigin: true,
+    //       pathRewrite: {
+    //         '^/banner': '/banner'
+    //       }
+    //   },
+    // }
   },
 
   build: {

@@ -192,9 +192,13 @@
 				<div class="singupForm">
 					<span class="signtitle">· 参会报名 ·</span>
 					<div class="radioSingle" @click="changeRadio()">
-						<span v-if="radiodata">{{radiodata.roadShowName}}</span>
-						<span v-else>选择路演场次（单选）</span>
+						<span>选择路演场次（多选）</span>
 						<span> > </span>
+					</div>
+					<div class="projectItem">
+						<span v-for="(item,index) in radiodata" :key="index">
+							{{item.roadShowName}}
+						</span>
 					</div>
 					<input type="text" placeholder="姓名" v-model="form.name">
 					<input type="text" placeholder="公司名称" v-model="form.company">
@@ -206,8 +210,8 @@
 			</div>
 		</div>
 		<!-- 单选 -->
-		<singleradio v-if="radioSingle" v-model="radioSingle" @radioMethods="radioMethods"></singleradio>
-		<!-- <checkradio></checkradio> -->
+		<!-- <singleradio v-if="radioSingle" v-model="radioSingle" @radioMethods="radioMethods"></singleradio> -->
+		<checkradio v-if="radioSingle" v-model="radioSingle" @checkBoxclick="checkBoxclick"></checkradio>
 	</div>
 </template>
 
@@ -247,7 +251,7 @@ export default {
 			let locale = this.$i18n.locale;
 			locale === 'zh' ? this.$i18n.locale = 'en' : this.$i18n.locale = 'zh'
 		},
-		radioMethods(data){ // 单选按钮完成动作
+		checkBoxclick(data){ // 多选按钮完成动作
 			this.radiodata = data;
 			this.radioSingle = false;
 		},
@@ -255,7 +259,11 @@ export default {
 			this.radioSingle = true;
 		},
 		submit(){ // 提交报名
-			if(!this.radiodata.id){
+			
+
+			console.log(roadshowId)
+			
+			if(this.radiodata.length == 0){
 				Toast({
 					message: '请选择场次',
 					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
@@ -298,14 +306,18 @@ export default {
 				return;
 			}
 
-			this.axios.post('/vc/qhRoadShow/signUp',{
+			let roadshowId = this.radiodata.map((data)=>{
+				return data.id
+			})
+
+			this.axios.post(this.domain+'/vc/qhRoadShow/signUp',{
 				"companyName": this.form.company, // 公司名
-				"roadshowId": this.radiodata.id, // 路演场次Id
+				"roadshowId": roadshowId.join(','), // 路演场次Id
 				"name": this.form.name, //姓名
 				"position": this.form.position, // 职位
 				"phoneNo": this.form.phone, // 手机号
 				"wxNum": this.form.wechat, // 微信
-				"type": "0",
+				"type": "3",
 				"language": "0"
 			}).then((res)=>{
 				if(res.data.status == 1){
@@ -313,7 +325,6 @@ export default {
 						message: '报名成功',
 						iconClass: 'iconfont  icon-chenggong'
 					})
-					
 				}else{
 					Toast({
 						message: '报名失败',

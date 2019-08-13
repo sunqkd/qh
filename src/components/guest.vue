@@ -121,7 +121,13 @@
     　　　　　　 document.body.scrollTop = scroll_top;  
 　　　　     },
             submit(){
-                
+                if(this.checkData.length == 0){
+                    Toast({
+                        message: '请选择场次',
+                        iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                    })
+                    return;
+                }
                 if(!this.form.name){
                     Toast({
                         message: '请填写姓名',
@@ -158,14 +164,18 @@
                     return;
                 }
 
-                this.axios.post('/vc/qhRoadShow/signUp',{
+                let roadshowId = this.checkData.map((data)=>{
+                    return data.id
+                })
+
+                this.axios.post(this.domain+'/vc/qhRoadShow/signUp',{
                     "companyName": this.form.company, // 公司名
-                    "roadshowId": this.radiodata.id, // 路演场次Id
+                    "roadshowId": roadshowId.join(','), // 路演场次Id
                     "name": this.form.name, //姓名
                     "position": this.form.position, // 职位
                     "phoneNo": this.form.phone, // 手机号
                     "wxNum": this.form.wechat, // 微信
-                    "type": "0",
+                    "type": "1",
                     "language": "0"
                 }).then((res)=>{
                     if(res.data.status == 1){
@@ -195,12 +205,5 @@
         background-size:cover;
         background-color:#01040D;
         padding-bottom:50px;
-    }
-    .projectItem{
-        color:#ffffff;
-        font-size:14px;
-        span{
-            display:block;
-        }
     }
 </style>
