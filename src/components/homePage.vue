@@ -743,9 +743,11 @@ export default {
 			display:flex;
 			align-items: center;
 			justify-content: center;
+			max-width: 750px;
 		}
 		.fourTab{
 			width:100%;
+			max-width: 750px;
 			height:40px;
 			background:rgba(1,79,125,0.95);
 			color:#ffffff;
