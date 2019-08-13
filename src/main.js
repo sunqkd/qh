@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import axios from 'axios'
 import VueI18n from 'vue-i18n';
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'; 
+Vue.prototype.axios = axios;
 Vue.use(Mint);
 Vue.use(VueI18n);
 

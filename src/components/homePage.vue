@@ -176,7 +176,7 @@
 					<li>
 						<router-link to="/industry">
 							<span>前海产业</span>
-							<span>报名 > </span>
+							<span>对接 > </span>
 						</router-link>
 					</li>
 					<li>
@@ -191,21 +191,22 @@
 			<div class="singupFormContain" style="margin-top:68px;">
 				<div class="singupForm">
 					<span class="signtitle">· 参会报名 ·</span>
-					<div class="radioSingle">
-						<span>选择路演场次（单选）</span>
+					<div class="radioSingle" @click="changeRadio()">
+						<span v-if="radiodata">{{radiodata.roadShowName}}</span>
+						<span v-else>选择路演场次（单选）</span>
 						<span> > </span>
 					</div>
-					<input type="text" placeholder="姓名">
-					<input type="text" placeholder="公司名称">
-					<input type="text" placeholder="职位">
-					<input type="text" placeholder="微信">
-					<input type="text" placeholder="手机">
-					<button>提交</button>
+					<input type="text" placeholder="姓名" v-model="form.name">
+					<input type="text" placeholder="公司名称" v-model="form.company">
+					<input type="text" placeholder="职位" v-model="form.position">
+					<input type="text" placeholder="微信" v-model="form.wechat">
+					<input type="text" placeholder="手机" v-model="form.phone">
+					<button @click="submit()">提交</button>
 				</div>
 			</div>
 		</div>
 		<!-- 单选 -->
-		<!-- <singleradio></singleradio> -->
+		<singleradio v-if="radioSingle" v-model="radioSingle" @radioMethods="radioMethods"></singleradio>
 		<!-- <checkradio></checkradio> -->
 	</div>
 </template>
@@ -222,22 +223,103 @@ export default {
 		return {
 			people:people,
 			active:active,
-			msg: 'Welcome to Your homePage'
+			radioSingle:false,
+			radiodata:'',
+			form:{
+				name:'', // 名字
+				company:'', // 公司
+				position:'', // 职位
+				wechat:'', // 微信
+				phone:'', // 电话号码
+			},
+			domain:'https://test1.dyly.com',
+
 		}
 	},
 	created(){
-		ModalHelper.afterOpen();
+		// ModalHelper.afterOpen();
 	},
 	mounted(){
-		Toast({
-			message: '操作成功',
-			iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
-		});
+		
 	},
 	methods:{
 		change(){ // 中英文切换
 			let locale = this.$i18n.locale;
 			locale === 'zh' ? this.$i18n.locale = 'en' : this.$i18n.locale = 'zh'
+		},
+		radioMethods(data){ // 单选按钮完成动作
+			this.radiodata = data;
+			this.radioSingle = false;
+		},
+		changeRadio(){ // 
+			this.radioSingle = true;
+		},
+		submit(){ // 提交报名
+			if(!this.radiodata.id){
+				Toast({
+					message: '请选择场次',
+					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+				})
+				return;
+			}
+			if(!this.form.name){
+				Toast({
+					message: '请填写姓名',
+					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+				})
+				return;
+			}
+			if(!this.form.company){
+				Toast({
+					message: '请填写公司',
+					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+				})
+				return;
+			}
+			if(!this.form.position){
+				Toast({
+					message: '请填写职位',
+					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+				})
+				return;
+			}
+			if(!this.form.wechat){
+				Toast({
+					message: '请填写微信',
+					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+				})
+				return;
+			}
+			if(!this.form.phone ||  !/(^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$)/.test(this.form.phone)){
+				Toast({
+					message: '手机号为空或者手机号格式不正确',
+					iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+				})
+				return;
+			}
+
+			this.axios.post(this.domain + '/vc/qhRoadShow/signUp',{
+				"companyName": this.form.company, // 公司名
+				"roadshowId": this.radiodata.id, // 路演场次Id
+				"name": this.form.name, //姓名
+				"position": this.form.position, // 职位
+				"phoneNo": this.form.phone, // 手机号
+				"wxNum": this.form.wechat, // 微信
+				"type": "0",
+				"language": "0"
+			}).then((res)=>{
+				if(res.data.status == 1){
+					Toast({
+						message: '报名成功',
+						iconClass: 'iconfont  icon-chenggong'
+					})
+				}else{
+					Toast({
+						message: '报名失败',
+						iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+					})
+				}
+			})
 		}
 	},
 
@@ -247,7 +329,7 @@ export default {
 		"Toast":Toast
 	},
 	destroyed(){
-        ModalHelper.beforeClose();
+        // ModalHelper.beforeClose();
     }
 	
 }

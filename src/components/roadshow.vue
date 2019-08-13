@@ -65,18 +65,42 @@
         </div>
         <!-- 下载 -->
         <div class="download" style="margin-top:34px;">
-            <span>下载路演企业登记表</span>
+            <span @click="download()">下载路演企业登记表</span>
         </div>
     </div>
 </template>
 <script>
+    import { Toast } from 'mint-ui';
     export default {
-        
+        data(){
+            return{
+                domain:'https://test1.dyly.com',
+
+            }
+        },
+        methods:{
+            download(){
+                this.axios.post(this.domain + '/vc/qhRoadShow/downloadExcel',{
+                    downloadExcelType:'1'
+                }).then((res)=>{
+                    if(res.data.status == 1){
+                        console.log(res);
+                        window.open(res.data.data.downloadUrl)
+                    }else{
+                        Toast({
+                            message: '下载失败',
+                            iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+					    })
+                    }
+                })
+            }
+        }
     }
 </script>
 <style lang="scss">
     .roadshow{
         width:100%;
+        box-sizing: border-box;
         background:url('./img/bg3.png');
         background-size:cover;
         background-color:#01040D;
