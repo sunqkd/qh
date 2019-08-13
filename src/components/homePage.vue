@@ -298,7 +298,7 @@ export default {
 				return;
 			}
 
-			this.axios.post(this.domain + '/vc/qhRoadShow/signUp',{
+			this.axios.post('/vc/qhRoadShow/signUp',{
 				"companyName": this.form.company, // 公司名
 				"roadshowId": this.radiodata.id, // 路演场次Id
 				"name": this.form.name, //姓名
@@ -313,6 +313,7 @@ export default {
 						message: '报名成功',
 						iconClass: 'iconfont  icon-chenggong'
 					})
+					
 				}else{
 					Toast({
 						message: '报名失败',

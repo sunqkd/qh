@@ -53,12 +53,12 @@
                     </span>
                 </div>
                 
-                <input type="text" placeholder="姓名">
-                <input type="text" placeholder="公司名称">
-                <input type="text" placeholder="职位">
-                <input type="text" placeholder="微信">
-                <input type="text" placeholder="手机">
-                <button>提交</button>
+                <input type="text" placeholder="姓名" v-model="form.name">
+                <input type="text" placeholder="公司名称" v-model="form.company">
+                <input type="text" placeholder="职位" v-model="form.position">
+                <input type="text" placeholder="微信" v-model="form.wechat">
+                <input type="text" placeholder="手机" v-model="form.phone">
+                <button @click="submit()">提交</button>
             </div>
         </div>
         <!-- 下载 -->
@@ -80,6 +80,13 @@
                 domain:'https://test1.dyly.com',
                 checkFlag:false,
                 checkData:[],
+                form:{
+                    name:'', // 姓名
+                    company:'', // 公司名称
+                    position:'', // 职位
+                    wechat:'', // 微信
+                    phone:'', // 电话
+                }
             }
         },
         created(){
@@ -108,11 +115,73 @@
                 console.log(data);
                 this.checkFlag = false;
             },
-            setScrollTop(scroll_top) {  
+            setScrollTop(scroll_top){  
     　　　　　　 document.documentElement.scrollTop = scroll_top;  
     　　　　　　 window.pageYOffset = scroll_top;  
     　　　　　　 document.body.scrollTop = scroll_top;  
-　　　　     }
+　　　　     },
+            submit(){
+                
+                if(!this.form.name){
+                    Toast({
+                        message: '请填写姓名',
+                        iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                    })
+                    return;
+                }
+                if(!this.form.company){
+                    Toast({
+                        message: '请填写公司',
+                        iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                    })
+                    return;
+                }
+                if(!this.form.position){
+                    Toast({
+                        message: '请填写职位',
+                        iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                    })
+                    return;
+                }
+                if(!this.form.wechat){
+                    Toast({
+                        message: '请填写微信',
+                        iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                    })
+                    return;
+                }
+                if(!this.form.phone ||  !/(^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$)/.test(this.form.phone)){
+                    Toast({
+                        message: '手机号为空或者手机号格式不正确',
+                        iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                    })
+                    return;
+                }
+
+                this.axios.post('/vc/qhRoadShow/signUp',{
+                    "companyName": this.form.company, // 公司名
+                    "roadshowId": this.radiodata.id, // 路演场次Id
+                    "name": this.form.name, //姓名
+                    "position": this.form.position, // 职位
+                    "phoneNo": this.form.phone, // 手机号
+                    "wxNum": this.form.wechat, // 微信
+                    "type": "0",
+                    "language": "0"
+                }).then((res)=>{
+                    if(res.data.status == 1){
+                        Toast({
+                            message: '报名成功',
+                            iconClass: 'iconfont  icon-chenggong'
+                        })
+                        
+                    }else{
+                        Toast({
+                            message: '报名失败',
+                            iconClass: 'iconfont  icon-dingdanzhuangtaishibai'
+                        })
+                    }
+                })
+            }
         },
         components:{
             checkradio

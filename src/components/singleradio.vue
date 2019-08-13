@@ -32,7 +32,7 @@
         },
         methods:{
             getCC(){ // 获取数据
-                this.axios.post(this.domain+'/vc/qhRoadShow/getQhRoadShowList',{
+                this.axios.post('/vc/qhRoadShow/getQhRoadShowList',{
                     "language":0
                 }).then((res)=>{
                     if(res.data.status == 1){
