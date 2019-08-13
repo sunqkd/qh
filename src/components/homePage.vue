@@ -162,27 +162,45 @@
 			<div class="signup">
 				<ul>
 					<li>
-						<span>路演项目</span>
-						<span>报名 > </span>
+						<router-link to="/roadshow">
+							<span>路演项目</span>
+							<span>报名 > </span>
+						</router-link>
 					</li>
 					<li>
-						<span>嘉宾评委</span>
-						<span>报名 > </span>
+						<router-link to="/guest">
+							<span>嘉宾评委</span>
+							<span>报名 > </span>
+						</router-link>
 					</li>
 					<li>
-						<span>前海产业</span>
-						<span>报名 > </span>
+						<router-link to="/industry">
+							<span>前海产业</span>
+							<span>报名 > </span>
+						</router-link>
 					</li>
 					<li>
-						<span>媒体/商务</span>
-						<span>合作 > </span>
+						<router-link to="/media">
+							<span>媒体/商务</span>
+							<span>合作 > </span>
+						</router-link>
 					</li>
 				</ul>
 			</div>
 			<!-- 路演报名表单 -->
-			<div class="singupFormContain">
+			<div class="singupFormContain" style="margin-top:68px;">
 				<div class="singupForm">
-					
+					<span class="signtitle">· 参会报名 ·</span>
+					<div class="radioSingle">
+						<span>选择路演场次（单选）</span>
+						<span> > </span>
+					</div>
+					<input type="text" placeholder="姓名">
+					<input type="text" placeholder="公司名称">
+					<input type="text" placeholder="职位">
+					<input type="text" placeholder="微信">
+					<input type="text" placeholder="手机">
+					<button>提交</button>
 				</div>
 			</div>
 		</div>
@@ -488,25 +506,21 @@ export default {
 						height:100%;
 						background:url('./img/db.png');
 						background-size: cover;
-						display:flex;
-						flex-direction: column;
-						align-items: center;
-						justify-content: center;
-						font-size:13px;
-						color:rgba(255,255,255,1);
-						line-height:18px;
+						a{
+							width:100%;
+							height:100%;
+							display:flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+							font-size:13px;
+							color:rgba(255,255,255,1);
+							line-height:18px;
+							text-decoration: none;
+						}
 					}
 				}
 			}
-			.singupFormContain{
-				width:100%;
-				padding:0 16px;
-				box-sizing: border-box;
-				.singupForm{
-
-				}
-			}
-			
 		}
 	}
 </style>

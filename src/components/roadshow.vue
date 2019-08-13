@@ -2,7 +2,7 @@
     <div class="roadshow">
         <div class="roadTitleContain">
             <div class="roadTitle" style="margin-top:32px;">
-                · 嘉宾团享有的权益 ·
+                · 路演项目享有的权益 ·
             </div>
         </div>
         <!-- 权益 -->
@@ -13,36 +13,46 @@
                     <span>享有国务院批复的深港合作区的优惠政策</span>
                 </div>
                 <div class="right">
-                    <img src="./img/icon_09@2x.png" alt="">
-                    <span>加入国际路演中心科创联盟触碰全球优质资源</span>
+                    <img src="./img/icon_02@2x.png" alt="">
+                    <span>入驻深圳市首批双创示范基地-前海梦工场，并享最优政策</span>
                 </div>
             </div>
             <div class="roadQyitem">
                 <div class="left">
-                    <img src="./img/icon_10@2x.png" alt="">
-                    <span>链接前海优质项目和国内外顶尖母基金及政府引导基金</span>
+                    <img src="./img/icon_03@2x.png" alt="">
+                    <span>提供前海国际一流的创业资源和优质服务</span>
                 </div>
                 <div class="right">
-                    <img src="./img/icon_02@2x.png" alt="">
-                    <span>入驻深圳市首批双创示范基地-前海梦工场 纳入所属领域的创投生态圈体系</span>
+                    <img src="./img/icon_04@2x.png" alt="">
+                    <span>产业垂直孵化提供技术、市场、产业、资本支持</span>
+                </div>
+            </div>
+            <div class="roadQyitem">
+                <div class="left">
+                    <img src="./img/icon_05@2x.png" alt="">
+                    <span>纳入所属领域的创投生态圈体系</span>
+                </div>
+                <div class="right">
+                    <img src="./img/icon_06@2x.png" alt="">
+                    <span>链接产业资本和国内外顶尖投资机构</span>
                 </div>
             </div>
             <div class="roadQyitem">
                 <div class="left">
                     <img src="./img/icon_07@2x.png" alt="">
-                    <span>主流媒体采访报道传播机构品牌</span>
+                    <span>主流媒体采访报道传播项目品牌</span>
                 </div>
                 <div class="right">
-                    
+                   
                 </div>
             </div>
         </div>
         <!-- 报名 -->
         <div class="singupFormContain" style="margin-top:68px;">
             <div class="singupForm">
-                <span class="signtitle">· 嘉宾团报名 ·</span>
+                <span class="signtitle">· 路演项目报名 ·</span>
                 <div class="radioSingle">
-                    <span>选择点评场次（多选）</span>
+                    <span>选择路演场次（单选）</span>
                     <span> > </span>
                 </div>
                 <input type="text" placeholder="姓名">
@@ -55,7 +65,7 @@
         </div>
         <!-- 下载 -->
         <div class="download" style="margin-top:34px;">
-            <span>下载嘉宾评委登记表</span>
+            <span>下载路演企业登记表</span>
         </div>
     </div>
 </template>
