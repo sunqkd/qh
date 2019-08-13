@@ -90,6 +90,12 @@
         company:'红秀资本',
         position:'董事长'
     },
+    {
+        logo:'./static/img/yeyongsheng.png',
+        name:'叶永圣',
+        company:'东方盛鼎',
+        position:'总经理'
+    }
     
 ]
 

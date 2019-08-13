@@ -212,6 +212,39 @@
 		<!-- 单选 -->
 		<!-- <singleradio v-if="radioSingle" v-model="radioSingle" @radioMethods="radioMethods"></singleradio> -->
 		<checkradio v-if="radioSingle" v-model="radioSingle" @checkBoxclick="checkBoxclick"></checkradio>
+
+
+		<div class="tosignup" @click="joinTable()" v-if="joinFlag">
+			投资人参会报名
+		</div>
+		<div class="fourTab">
+			<ul>
+				<li>
+					<router-link to="/roadshow">
+						<span>项目路演</span>
+						<span>报名</span>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="/guest">
+						<span>嘉宾评委</span>
+						<span>报名</span>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="/industry">
+						<span>前海产业</span>
+						<span>对接</span>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="/media">
+						<span>媒体/商务</span>
+						<span>对接</span>
+					</router-link>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
@@ -237,14 +270,15 @@ export default {
 				phone:'', // 电话号码
 			},
 			domain:'https://test1.dyly.com',
-
+			joinFlag:false, // 参会报名显示和隐藏
 		}
 	},
 	created(){
 		// ModalHelper.afterOpen();
+		this.listenBody(); // 页面滚动
 	},
 	mounted(){
-		
+		this.share();
 	},
 	methods:{
 		change(){ // 中英文切换
@@ -332,7 +366,64 @@ export default {
 					})
 				}
 			})
-		}
+		},
+		listenBody(){ // 滚动监听
+			var that = this;
+			$(window).scroll(function() {
+				var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+				var h = $(document).height();
+				if(scrollTop  > window.screen.height){ // 一个整屏幕高度
+					that.joinFlag = true;
+					if(h - scrollTop < 1400){
+						that.joinFlag = false;
+					}
+				}else{
+					that.joinFlag = false;
+				}
+			})
+		},
+		joinTable(){ // 参与报名
+			var top = $('.singupFormContain').offset().top; // 报名参与的高度
+			$('body,html').animate({
+				scrollTop: top
+			}, 800);
+		},
+		share(){
+			var that = this;
+			$.getScript('https://res.wx.qq.com/open/js/jweixin-1.0.0.js', function(){
+				$.ajax({
+					url: "https://m.dyly.com/weixin/getWxConfig",
+					type: 'POST',
+					data: {
+						url: window.location.href
+					}
+				}).success(function(data){
+					wx.config({
+						appId: data.data.appId,
+						timestamp: data.data.timestamp,
+						nonceStr: data.data.nonceStr,
+						signature: data.data.signature,
+						jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+					});
+					// updateAppMessageShareData
+					wx.ready(function(){
+						// 朋友圈分享
+						wx.onMenuShareTimeline({
+							title: "智汇全球·追梦前海",
+							link: window.location.href,
+							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+						})
+						// 分享给朋友
+						wx.onMenuShareAppMessage({
+							title: "智汇全球·追梦前海",
+							desc: "智汇全球·追梦前海",
+							link: window.location.href,
+							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+						})
+					})
+				})
+			});
+		},
 	},
 
 	components:{
@@ -351,6 +442,7 @@ export default {
 		width:100%;
 		height:auto;
 		background-color:#01040D;
+		padding-top: 40px;
 		.homebg{
 			width:100%;
 			position:relative;
@@ -634,6 +726,52 @@ export default {
 							color:rgba(255,255,255,1);
 							line-height:18px;
 							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+		.tosignup{
+			width:100%;
+			height:40px;
+			background:rgba(1,79,125,0.95);
+			color:#ffffff;
+			font-size:14px;
+			position:fixed;
+			bottom:0;
+			z-index: 10;
+			display:flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.fourTab{
+			width:100%;
+			height:40px;
+			background:rgba(1,79,125,0.95);
+			color:#ffffff;
+			position:fixed;
+			top:0;
+			ul{
+				width:100%;
+				display:flex;
+				li{
+					width:25%;
+					height:100%;
+					border-right:1px solid rgba(2,8,22,0.15);
+					a{
+						width:100%;
+						height:100%;
+						color:#ffffff;
+						display:flex;
+						flex-direction:column;
+						font-size: 12px;
+						align-items: center;
+						justify-content: center;
+						text-decoration: none;
+						span{
+							&:nth-child(1){
+								margin-top:2px;
+							}
 						}
 					}
 				}
