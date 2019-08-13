@@ -159,7 +159,6 @@ export default {
 		img{
 			width:32px;
 			height:32px;
-			display:flex;
 			margin-right:12px;
 		}
 		.left{
