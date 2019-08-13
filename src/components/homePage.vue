@@ -512,7 +512,7 @@ export default {
 							}
 						}
 						span:nth-child(2){
-							width:74px;
+							width:77px;
 							color:rgba(65,179,243,1);
 							font-size:14px;
 							margin-left:16px;
