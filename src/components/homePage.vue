@@ -281,7 +281,9 @@ export default {
 		this.listenBody(); // 页面滚动
 	},
 	mounted(){
-		this.share();
+		setTimeout(()=>{
+			this.share();
+		},0)
 	},
 	methods:{
 		change(){ // 中英文切换
@@ -426,7 +428,7 @@ export default {
 					})
 				})
 			});
-		},
+		}
 	},
 
 	components:{

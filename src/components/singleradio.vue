@@ -112,9 +112,7 @@
                     font-size: 14px;
                     .radiocontainsingle{
                         position:absolute;
-                        display:flex;
-                        align-items: center;
-                        right:0;
+                        left:0px;
                         top:0px;
                         z-index:10;
                         width: 100%;
@@ -126,7 +124,7 @@
                             filter:alpha(opacity=0);
                             z-index: 5;
                             position: relative;
-                            left: 0;
+                            left: 0px;
                             top: 0px;
                             /* cursor:pointer; */
                             width: 100%;
@@ -145,8 +143,8 @@
                             display: inline-block;
                             z-index: 3;
                             position: absolute;
-                            right: 10px;
-                            
+                            right:10px;
+                            top:10px;
                         }
                     }
                 }
