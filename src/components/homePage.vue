@@ -273,7 +273,7 @@ export default {
 			joinFlag:false, // 参会报名显示和隐藏
 			title:'前海 “一带一路” 国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
 			decs:'路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>>',
-			imgUrl:'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+			imgUrl:'https://m.dyly.com/register/app_h5/img/logo_ehub.jpg'
 		}
 	},
 	created(){
