@@ -11,6 +11,11 @@
 				<span>主办单位：前海科创投控股有限公司</span>
 				<span>承办单位：前海深港青年梦工场、第一路演</span>
 			</div>
+
+
+			<div class="icon-video transform"></div>
+			<audio src="https://static.dyly.com/h5/h5style/jinghe/bg.mp3" id="bg-music" controls="controls" autoplay="autoplay"
+				loop></audio>
 		</div>
 		<div class="homeBody">
 			<div class="headlineleft" style="width:73.6%;">· 活动背景 ·</div>
@@ -342,11 +347,27 @@ export default {
 	created(){
 		// ModalHelper.afterOpen();
 		this.listenBody(); // 页面滚动
+
 	},
 	mounted(){
+		var that = this;
 		setTimeout(()=>{
-			this.share();
+			that.share();
 		},0)
+		var audio = $('audio').get(0);
+            //   audio.play();
+		$('.icon-video').click(function () {
+			if (audio.paused) {
+				audio.play();
+			} else {
+				audio.pause();
+			}
+		})
+
+		$(document).ready(function () {
+			that.autoPlayMusic();
+            that.audioAutoPlay();
+		});
 	},
 	methods:{
 		change(){ // 中英文切换
@@ -476,6 +497,42 @@ export default {
 					})
 				})
 			});
+		},
+
+		// 音乐播放
+		autoPlayMusic() {
+			var that = this;
+                // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+			function musicInBrowserHandler() {
+				that.musicPlay(true);
+				document.body.removeEventListener('touchstart', musicInBrowserHandler);
+			}
+			document.body.addEventListener('touchstart', musicInBrowserHandler);
+			// 自动播放音乐效果，解决微信自动播放问题
+			function musicInWeixinHandler() {
+				that.musicPlay(true);
+				document.addEventListener("WeixinJSBridgeReady", function () {
+					that.musicPlay(true);
+				}, false);
+				document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+			}
+			document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+		},
+		musicPlay(isPlay) {
+			var media = document.querySelector('#bg-music');
+			if (isPlay && media.paused) {
+				media.play();
+			}
+			if (!isPlay && !media.paused) {
+				media.pause();
+			}
+		},
+		audioAutoPlay() {
+			var audio = document.getElementById('bg-music');
+			audio.play();
+			document.addEventListener("WeixinJSBridgeReady", function () {
+				audio.play();
+			}, false);
 		}
 	},
 
@@ -526,6 +583,19 @@ export default {
 					font-size:13px;
 					line-height:22px;
 				}
+			}
+			.icon-video{
+				width: 30px;
+				height: 30px;
+				position: fixed;
+				right: 15px;
+				top: 44px;
+				background: url('https://static.dyly.com/yuegangao/video.svg');
+				z-index: 2;
+				background-size: 100%;
+			}
+			.transform{
+				animation: transform 3.5s linear infinite;
 			}
 		}
 		.homeBody{
@@ -853,4 +923,36 @@ export default {
 			}
 		}
 	}
+	@-webkit-keyframes transform {
+		0% {
+			-webkit-transform: rotateZ(0);
+			transform: rotateZ(0)
+		}
+
+		100% {
+			-webkit-transform: rotateZ(360deg);
+			transform: rotateZ(360deg)
+		}
+	}
+
+	@keyframes transform {
+		0% {
+			-webkit-transform: rotateZ(0);
+			transform: rotateZ(0)
+		}
+
+		100% {
+			-webkit-transform: rotateZ(360deg);
+			transform: rotateZ(360deg)
+		}
+	}
+
+	#bg-music {
+		width: 0;
+		height: 0;
+		overflow: hidden;
+		display: block;
+		right: 0;
+	}
+
 </style>
