@@ -9,7 +9,7 @@
 			<div class="unit">
 				<span>指导单位：前海管理局</span>
 				<span>主办单位：前海科创投控股有限公司</span>
-				<span>承办单位：前海深港青年梦工厂、第一路演</span>
+				<span>承办单位：前海深港青年梦工场、第一路演</span>
 			</div>
 		</div>
 		<div class="homeBody">
@@ -416,7 +416,7 @@ export default {
 						// 分享给朋友
 						wx.onMenuShareAppMessage({
 							title: ' 前海“一带一路”国际路演中心官方报名入口-新一代信息技术专场路演邀请函 ',
-							desc: '路演时间：8月20日 路演地点：前海深港青年梦工厂 智汇全球·追梦前海>> ',
+							desc: '路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>> ',
 							link: window.location.href,
 							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
 						})
