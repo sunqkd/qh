@@ -164,10 +164,16 @@ export default {
 		.left{
 			width:49%;
 			display:flex;
+			span{
+				width:calc(100% - 45px);
+			}
 		}
 		.right{
 			width:49%;
 			display:flex;
+			span{
+				width:calc(100% - 45px);
+			}
 		}
 	}
 }		
