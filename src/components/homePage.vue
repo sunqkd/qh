@@ -271,6 +271,9 @@ export default {
 			},
 			domain:'https://test1.dyly.com',
 			joinFlag:false, // 参会报名显示和隐藏
+			title:'前海 “一带一路” 国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
+			decs:'路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>>',
+			imgUrl:'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
 		}
 	},
 	created(){
@@ -409,16 +412,16 @@ export default {
 					wx.ready(function(){
 						// 朋友圈分享
 						wx.onMenuShareTimeline({
-							title: '前海 “一带一路” 国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
+							title: that.title,
 							link: window.location.href,
-							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+							imgUrl: that.imgUrl
 						})
 						// 分享给朋友
 						wx.onMenuShareAppMessage({
-							title: ' 前海“一带一路”国际路演中心官方报名入口-新一代信息技术专场路演邀请函 ',
-							desc: '路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>> ',
+							title: that.title,
+							desc: that.decs,
 							link: window.location.href,
-							imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+							imgUrl: that.imgUrl
 						})
 					})
 				})
