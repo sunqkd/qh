@@ -308,7 +308,7 @@
 				<li>
 					<router-link to="/media">
 						<span>媒体/商务</span>
-						<span>对接</span>
+						<span>合作</span>
 					</router-link>
 				</li>
 			</ul>
