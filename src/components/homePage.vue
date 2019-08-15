@@ -602,12 +602,13 @@ export default {
 		}
 		.homeBody{
 			width:100%;
-			// min-height:3070px;
-			background:url('./img/bg2.png');
+			background:url('./img/bg2.png') repeat-y;
 			background-size:cover;
 			background-color:#01040D;
 			position:relative;
-			top:-85px;
+			z-index:1;
+			margin-top:-85px;
+			padding-bottom:50px;
 			.timeShaft{
 				width:100%;
 				padding:37px 0 0 19px;
@@ -898,6 +899,7 @@ export default {
 			color:#ffffff;
 			position:fixed;
 			top:0;
+			z-index:2;
 			ul{
 				width:100%;
 				display:flex;
