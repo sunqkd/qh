@@ -342,7 +342,8 @@ export default {
 			joinFlag:false, // 参会报名显示和隐藏
 			title:'“一带一路” 前海国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
 			decs:'路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>>',
-			imgUrl:'https://m.dyly.com/register/app_h5/img/qh.jpg'
+			imgUrl:'https://m.dyly.com/register/app_h5/img/qh.jpg',
+			sharehref:'https://m.dyly.com/register/app_h5/qh/index.html'
 		}
 	},
 	created(){
@@ -485,14 +486,14 @@ export default {
 						// 朋友圈分享
 						wx.onMenuShareTimeline({
 							title: that.title,
-							link: window.location.href,
+							link: that.sharehref,
 							imgUrl: that.imgUrl
 						})
 						// 分享给朋友
 						wx.onMenuShareAppMessage({
 							title: that.title,
 							desc: that.decs,
-							link: window.location.href,
+							link: that.sharehref,
 							imgUrl: that.imgUrl
 						})
 					})
