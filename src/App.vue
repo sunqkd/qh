@@ -76,10 +76,13 @@ export default {
 			background:rgba(1,4,13,1);
 			border-radius:8px;
 			border:1px solid rgba(11,208,236,1);
-			color:rgba(255,255,255,1);
+			color:rgba(11,208,236,1);
 			display:flex;
 			align-items: center;
 			justify-content: center;
+			// background: linear-gradient(135deg, rgba(23,234,217,1) 0%, rgba(96,120,234,1) 100%);
+			// -webkit-background-clip: text;
+			// color: transparent;
 		}
 		.radioSingle{
 			width:100%;
