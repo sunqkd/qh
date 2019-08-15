@@ -257,6 +257,7 @@
 			<div class="singupFormContain" style="margin-top:68px;">
 				<div class="singupForm">
 					<span class="signtitle">· 参会报名 ·</span>
+					<div class="airborne">报名后携名片凭参会短信入场，谢绝空降。</div>
 					<div class="radioSingle" @click="changeRadio()" style="display:none">
 						<span>选择路演场次（多选）</span>
 						<span> > </span>
@@ -1053,5 +1054,11 @@ export default {
 		display: block;
 		right: 0;
 	}
-
+	.airborne{
+		display:flex;
+		justify-content: center;
+		font-size:12px;
+		color:rgba(65,179,243,1);
+		margin-bottom:16px;
+	}
 </style>
