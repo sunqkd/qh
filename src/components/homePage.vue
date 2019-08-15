@@ -903,7 +903,7 @@ export default {
 			}
 			.imgcontain{
 				width:100%;
-				padding:0 24px 0px 24px;
+				padding:0 16px 0px 16px;
 				margin-top:45px;
 				box-sizing: border-box;
 				img{
