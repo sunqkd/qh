@@ -4,7 +4,7 @@
         <div class="numContain">
             <div class="numItem">
                 <div class="numImg">
-                    <img src="./img/01@2x.png" alt="" style="width:44px;">
+                    <img src="./img/01@2x.png" alt="" style="width:37px;">
                 </div>
                 <div class="numText">
                     入驻前海创业园区首年可获80%租金和物管费资助
@@ -15,7 +15,7 @@
                     <img src="./img/02@2x.png" alt="">
                 </div>
                 <div class="numText">
-                    创业团队入选“孔雀计划”等最高可获1000万元资助
+                    创业团队入选“孔雀计划”等最高可获800万元资助
                 </div>
             </div>
             <div class="numItem">
@@ -31,7 +31,7 @@
         <div class="numContain" >
             <div class="numItem">
                 <div class="numImg">
-                    <img src="./img/01@2x.png" alt="" style="width:44px;">
+                    <img src="./img/01@2x.png" alt="" style="width:37px;">
                 </div>
                 <div class="numText">
                     设立港澳青年创新创业加速器可获100万元开办资助
@@ -42,7 +42,7 @@
                     <img src="./img/02@2x.png" alt="">
                 </div>
                 <div class="numText">
-                    创新载体承接国家级科创平台可获1000万元资助
+                    创新载体承接国家级科创平台最高可获800万元资助
                 </div>
             </div>
             <div class="numItem">
@@ -58,12 +58,15 @@
         <div class="numContain" >
             <div class="numItem">
                 <div class="numImg">
-                    <img src="./img/01@2x.png" alt="" style="width:44px;">
+                    <img src="./img/01@2x.png" alt="" style="width:37px;">
                 </div>
                 <div class="numText">
                     港澳青年在前海发展一次性最高可获3万元租房资助
                 </div>
             </div>
+        </div>
+        <div class="industext">
+            注：详情请查阅《关于支持港澳青年在前海发展的若干措施实施细则》，细则明确了《若干措施》适用对象的申请条件、支持方式、资助标准、办理程序以及其他相关要求。
         </div>
         <div class="singupFormContain" style="margin-top:68px;">
             <div class="singupForm">
@@ -236,6 +239,14 @@
                     font-size: 14px;
                 }
             }
+        }
+        .industext{
+            width: 100%;
+            padding:0 20px;
+            box-sizing: border-box;
+            color:rgba(255,255,255,0.6);
+            line-height:22px;
+            font-size:12px;
         }
     }
 </style>
