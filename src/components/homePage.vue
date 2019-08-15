@@ -274,6 +274,33 @@
 					<button @click="submit()">提交</button>
 				</div>
 			</div>
+			<div class="tableContain">
+				<!-- 剩余报名人数 -->
+				<div class="residue">
+					剩余报名名额：{{100 - tableList.length}}
+				</div>
+				<div class="interested">
+                    <ul class="interestedUL">
+                        <li class="interestedLi" v-for="(item,index) in tableList" :key="index">
+                            <span>
+                                {{tableList.length - index}}
+                            </span>
+                            <span>
+                                {{item.name}}
+                            </span>
+                            <span>
+                                {{item.companyName}}
+                            </span>
+                            <span>
+                                {{item.position}}
+                            </span>
+                            <span>
+                                {{item.phoneNo}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+			</div>
 			<div class="imgcontain">
 				<img src="./img/code.png" alt="">
 			</div>
@@ -281,7 +308,6 @@
 		<!-- 单选 -->
 		<!-- <singleradio v-if="radioSingle" v-model="radioSingle" @radioMethods="radioMethods"></singleradio> -->
 		<checkradio v-if="radioSingle" v-model="radioSingle" @checkBoxclick="checkBoxclick"></checkradio>
-
 
 		<div class="tosignup" @click="joinTable()" v-if="joinFlag">
 			参会报名
@@ -338,6 +364,7 @@ export default {
 				wechat:'', // 微信
 				phone:'', // 电话号码
 			},
+			tableList:[], // 报名列表数据
 			domain:'https://test1.dyly.com',
 			joinFlag:false, // 参会报名显示和隐藏
 			title:'“一带一路” 前海国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
@@ -349,7 +376,7 @@ export default {
 	created(){
 		// ModalHelper.afterOpen();
 		this.listenBody(); // 页面滚动
-
+		this.getTableList();
 	},
 	mounted(){
 		var that = this;
@@ -435,6 +462,7 @@ export default {
 						message: '报名成功',
 						iconClass: 'iconfont  icon-chenggong'
 					})
+					this.getTableList();
 				}else{
 					Toast({
 						message: '报名失败',
@@ -448,7 +476,7 @@ export default {
 			$(window).scroll(function() {
 				var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
 				var h = $(document).height();
-				if(scrollTop  > window.screen.height){ // 一个整屏幕高度
+				if(scrollTop  > window.screen.height /4){ // 一个整屏幕高度
 					that.joinFlag = true;
 					if(h - scrollTop < 1400){
 						that.joinFlag = false;
@@ -461,7 +489,7 @@ export default {
 		joinTable(){ // 参与报名
 			var top = $('.singupFormContain').offset().top; // 报名参与的高度
 			$('body,html').animate({
-				scrollTop: top
+				scrollTop: top - 100
 			}, 800);
 		},
 		share(){
@@ -535,6 +563,15 @@ export default {
 			document.addEventListener("WeixinJSBridgeReady", function () {
 				audio.play();
 			}, false);
+		},
+		getTableList(){ // 获取报名列表
+			this.axios.get(this.domain +'/vc/qhRoadShow/getSignUpList',{
+
+			}).then((res)=>{
+				if(res.data.status == 1){
+					this.tableList = res.data.data?res.data.data.reverse():[];
+				}
+			})
 		}
 	},
 
@@ -603,7 +640,7 @@ export default {
 		.homeBody{
 			width:100%;
 			background:url('./img/bg2.png') repeat-y;
-			background-size:cover;
+			background-size:100%;
 			background-color:#01040D;
 			position:relative;
 			z-index:1;
@@ -874,6 +911,64 @@ export default {
 					height:auto;
 					
 				
+				}
+			}
+			.tableContain{
+				width:100%;
+				padding: 0 16px;
+				box-sizing: border-box;
+				margin-top:48px;
+				.residue{
+					width:100%;
+					font-size:14px;
+					color:#ffffff;
+					display:flex;
+					justify-content: center;
+					margin-bottom: 20px;
+				}
+				.interestedUL{
+					width:100%;
+				}
+				.interestedLi{
+					width: 100%;
+					height: 35px;
+					display:flex;
+					background:rgba(59,150,210,0.15);
+					border-radius:2px;
+					margin-bottom: 1px;
+				} 
+				.interestedLi:last-child{
+					margin-bottom: none;
+				}
+				.interestedLi span{
+					height: 100%;
+					line-height: 35px;
+					text-align: center;
+					font-size:0px;
+					color:rgba(255,255,255,0.6);
+					overflow: hidden;/*超出部分隐藏*/
+					white-space: nowrap;/*不换行*/
+					text-overflow:ellipsis;/*超出部分文字以...显示*/
+				}
+				.interestedLi span:nth-child(1){
+					width:10%;
+					font-size:12px;
+				}
+				.interestedLi span:nth-child(2){
+					width:20%;
+					font-size:12px;
+				}
+				.interestedLi span:nth-child(3){
+					width:20%;
+					font-size:12px;
+				}
+				.interestedLi span:nth-child(4){
+					width:20%;
+					font-size:12px;
+				}
+				.interestedLi span:nth-child(5){
+					width:30%;
+					font-size:12px;
 				}
 			}
 		}
