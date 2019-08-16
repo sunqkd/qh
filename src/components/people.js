@@ -73,6 +73,12 @@
         position:'董事长'
     },
     {
+        logo:'./static/img/suijianfeng.png',
+        name:'隋建峰',
+        company:'启迪之星(深圳) ',
+        position:'总经理'
+    },
+    {
         logo:'./static/img/ouyang.png',
         name:'欧阳光耀',
         company:'澳银资本',

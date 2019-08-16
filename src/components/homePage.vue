@@ -10,10 +10,8 @@
 				<span>指导单位：前海管理局</span>
 				<span>主办单位：前海科创投控股有限公司</span>
 				<span>承办单位：前海深港青年梦工场、第一路演</span>
-				<span>直播平台：第一路演APP</span>
+				<img src="./img/LOGO@2x.png" alt="" style="height:20px;width:auto;margin-top:2px">
 			</div>
-
-
 			<div class="icon-video transform"></div>
 			<audio src="https://static.dyly.com/h5/h5style/jinghe/bg.mp3" id="bg-music" controls="controls" autoplay="autoplay"
 				loop></audio>
@@ -163,35 +161,38 @@
 				</ul>
 			</div>
 			<!-- 嘉宾评委团 -->
-			<div class="headlineleft" style="width:73.6%;margin-top:52px">
+			<div class="headlineleft" style="width:75%;margin-top:52px;display:flex;align-items:center">
 				· 嘉宾评委团 ·
+				<span style="font-size:12px;color:rgba(255,255,255,0.6);margin-left:5px;font-weight:normal">（嘉宾排名顺序不分先后）</span>
 			</div>
 			<div class="judge">
-				<ul>
+				<img src="./img/person.png" alt="">
+				<!-- <ul>
 					<li class="judgeItem" v-for="(item,index) in people" :key="index">
-						<!--头像 -->
 						<div class="judgeImg">
 							<div class="imgContain">
 								<img :src="item.logo" alt="" />
 							</div>
 						</div>
-						<!-- 姓名 -->
 						<div class="judgeName">
 							{{item.name}}
 						</div>
-						<!-- 公司名称 -->
 						<div class="judgeCompany">
 							{{item.company}}
 						</div>
-						<!-- 职位 -->
 						<div class="judgePosition">
 							{{item.position}}
 						</div>
 					</li>
 				</ul>
-				<div class="judgetext">嘉宾评委团 持续邀约中...</div>
+				<div class="judgetext">嘉宾评委团 持续邀约中...</div> -->
 			</div>
-			<div class="headlineright" style="width:73.6%;margin-top:46px">· 系列路演日程 ·</div>
+			<!-- 启动仪式 -->
+			<div class="headlineright" style="width:73.6%;margin-top:46px;">· 启动仪式特约机构 ·</div>
+			<div class="orgPeo">
+				<img src="./img/org.png" alt="">
+			</div>
+			<div class="headlineleft" style="width:73.6%;margin-top:46px">· 系列路演日程 ·</div>
 			<div class="series" style="clear:both">
 				<div class="tableheader">
 					<div>
@@ -217,10 +218,10 @@
 				</div>
 			</div>
 			<!-- 组委会介绍 -->
-			<div class="headlineleft" style="width:73.6%;margin-top:48px">
+			<div class="headlineright" style="width:73.6%;margin-top:48px;">
 				· 组委会介绍 ·
 			</div>
-			<div class="committee">
+			<div class="committee" style="clear:both">
 				前海科控是深圳市前海管理局全资直属的三家平台公司之一，通过聚焦科创产业空间运营、高端科技专业服务、科创及文创产业投资等核心业务，努力打造前海科创产业投资运营服务平台，快速推动前海科技创新产业集聚发展。
 				<br/><br/>
 				第一路演是领先的人工智能路演平台，主要为新兴成长企业、VC/PE投后项目、产业园区项目、双创赛事项目提供融资路演服务，参与策划深圳金博会、高交会等大型活动，平台与主流投资机构紧密合作，基于大数据及人工智能算法对机构投资风格的精准画像，为路演企业精准匹配潜在投资者。
@@ -278,7 +279,7 @@
 			<div class="tableContain">
 				<!-- 剩余报名人数 -->
 				<div class="residue">
-					剩余报名名额：{{100 - tableList.length}}
+					剩余报名名额：{{150 - tableList.length}}
 				</div>
 				<div class="interested">
                     <ul class="interestedUL">
@@ -377,12 +378,10 @@ export default {
 		// ModalHelper.afterOpen();
 		this.listenBody(); // 页面滚动
 		this.getTableList();
+		this.share();
 	},
 	mounted(){
 		var that = this;
-		setTimeout(function(){
-			that.share();
-		},0)
 		var audio = $('audio').get(0);
             //   audio.play();
 		$('.icon-video').click(function () {
@@ -735,7 +734,7 @@ export default {
 			.judge{
 				width:100%;
 				height:auto;
-				padding:24px 20px 0px 20px;
+				padding:24px 16px 0px 16px;
 				box-sizing: border-box;
 				ul{
 					width:100%;
@@ -797,6 +796,11 @@ export default {
 					font-size:14px;
 					color:rgba(98,178,232,1);
 					margin-top:10px;
+				}
+				img{
+					display:block;
+					width:100%;
+					height:auto;
 				}
 			}
 			.series{
@@ -969,6 +973,18 @@ export default {
 				.interestedLi span:nth-child(5){
 					width:30%;
 					font-size:12px;
+				}
+			}
+			.orgPeo{
+				width:100%;
+				padding:32px 16px 0 16px;
+				height:auto;
+				clear:both;
+				box-sizing: border-box;
+				img{
+					display:block;
+					width:100%;
+					height:auto;
 				}
 			}
 		}
