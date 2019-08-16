@@ -10,8 +10,12 @@ Vue.use(Router)
 export default new Router({
 	// mode: 'history',
 	routes: [
+		{
+			path: '',
+			redirect: '/index'
+		},
 		{ // 主页
-			path: '/',
+			path: '/index',
 			name: 'homePage',
 			component: homePage
 		},

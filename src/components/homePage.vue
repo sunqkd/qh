@@ -380,8 +380,8 @@ export default {
 	},
 	mounted(){
 		var that = this;
-		this.$nextTick(()=>{
-			this.share();
+		setTimeout(function(){
+			that.share();
 		})
 		var audio = $('audio').get(0);
             //   audio.play();
@@ -499,7 +499,7 @@ export default {
 					url: "https://m.dyly.com/weixin/getWxConfig",
 					type: 'POST',
 					data: {
-						url: that.sharehref
+						url: window.location.href
 					}
 				}).success(function(data){
 					wx.config({
@@ -514,14 +514,14 @@ export default {
 						// 朋友圈分享
 						wx.onMenuShareTimeline({
 							title: that.title,
-							link: that.sharehref,
+							link: window.location.href,
 							imgUrl: that.imgUrl
 						})
 						// 分享给朋友
 						wx.onMenuShareAppMessage({
 							title: that.title,
 							desc: that.decs,
-							link: that.sharehref,
+							link: window.location.href,
 							imgUrl: that.imgUrl
 						})
 					})
