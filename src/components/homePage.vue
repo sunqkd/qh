@@ -381,9 +381,9 @@ export default {
 	},
 	mounted(){
 		var that = this;
-		setTimeout(function(){
-			that.share();
-		},0)
+		this.$nextTick(()=>{
+			this.share();
+		})
 		var audio = $('audio').get(0);
             //   audio.play();
 		$('.icon-video').click(function () {
