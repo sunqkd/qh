@@ -376,15 +376,15 @@ export default {
 	},
 	created(){
 		// ModalHelper.afterOpen();
-		setTimeout(function(){
-			this.share();
-		},0)
+		
 		this.listenBody(); // 页面滚动
 		this.getTableList();
 	},
 	mounted(){
 		var that = this;
-		
+		setTimeout(function(){
+			that.share();
+		},0)
 		var audio = $('audio').get(0);
             //   audio.play();
 		$('.icon-video').click(function () {
