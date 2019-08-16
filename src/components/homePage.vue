@@ -92,9 +92,9 @@
 			<div class="roadProject">
 				<ul>
 					<li>项目1：骨传导智能眼镜</li>
-					<li>全球首款日桶戴设计的智能眼镜.可适配任何度数的镜片。</li>
-					<li>美国众筹平台Kickstarter上45天内众筹220万美元，目前预售鼻累计趙过3000万。</li>
-					<li>跨国核心团队，创始人毕业于常宵藤大学，获福布斯U30, MIT REVIEW U35^荣誉。</li>
+					<li>全球首款日常佩戴设计的智能眼镜，可适配任意度数的镜片</li>
+					<li>美国众筹平台Kickstarter上45天内众筹220万美元，目前预售量累计超过3000万。</li>
+					<li>跨国核心团队，创始人毕业于常春藤大学，或福布斯U30,MIT REVIEW U35等荣誉。</li>
 				</ul>
 			</div>
 			<div class="roadProject">
