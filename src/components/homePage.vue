@@ -382,7 +382,7 @@ export default {
 		var that = this;
 		setTimeout(function(){
 			that.share();
-		})
+		},0)
 		var audio = $('audio').get(0);
             //   audio.play();
 		$('.icon-video').click(function () {
