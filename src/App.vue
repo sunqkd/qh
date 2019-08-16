@@ -6,7 +6,59 @@
 
 <script>
 export default {
-  	name: 'App'
+	name: 'App',
+	data(){
+		return {
+			title:'“一带一路” 前海国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
+			decs:'路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>>',
+			imgUrl:'https://m.dyly.com/register/app_h5/img/qh.jpg',
+			sharehref:'https://m.dyly.com/register/app_h5/qh/index.html'
+		}
+	},
+	created(){
+		setTimeout(()=>{
+			this.share();
+		},0)
+	},
+	methods:{
+		share(){
+			var that = this;
+			$.getScript('https://res.wx.qq.com/open/js/jweixin-1.0.0.js', function(){
+				$.ajax({
+					url: "https://m.dyly.com/weixin/getWxConfig",
+					type: 'POST',
+					data: {
+						url: window.location.href
+					}
+				}).success(function(data){
+					wx.config({
+						appId: data.data.appId,
+						timestamp: data.data.timestamp,
+						nonceStr: data.data.nonceStr,
+						signature: data.data.signature,
+						jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+					});
+					// updateAppMessageShareData
+					wx.ready(function(){
+						// 朋友圈分享
+						wx.onMenuShareTimeline({
+							title: that.title,
+							link: that.sharehref,
+							imgUrl: that.imgUrl
+						})
+						// 分享给朋友
+						wx.onMenuShareAppMessage({
+							title: that.title,
+							desc: that.decs,
+							link: that.sharehref,
+							imgUrl: that.imgUrl
+						})
+					})
+				})
+			});
+		},
+	}
+	  
 }
 </script>
 

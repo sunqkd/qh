@@ -376,9 +376,9 @@ export default {
 	},
 	created(){
 		// ModalHelper.afterOpen();
-		setTimeout(()=>{
-			this.share();
-		},0)
+		// setTimeout(()=>{
+		// 	this.share();
+		// },0)
 		this.listenBody(); // 页面滚动
 		this.getTableList();
 	},
