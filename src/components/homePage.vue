@@ -376,7 +376,7 @@ export default {
 	},
 	created(){
 		// ModalHelper.afterOpen();
-		setTimeout(()=>{
+		setTimeout(function(){
 			this.share();
 		},0)
 		this.listenBody(); // 页面滚动
