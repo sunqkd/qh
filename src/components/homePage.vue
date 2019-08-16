@@ -306,6 +306,16 @@
 			<div class="imgcontain">
 				<img src="./img/code.png" alt="">
 			</div>
+			<div class="adressContain">
+				<div class="adress">
+					<span>
+						活动地址：<a href="http://apis.map.qq.com/uri/v1/marker?marker=coord:22.518,113.90;title:前海深港青年梦工场2号楼;addr: 广东省深圳市南山区前海深港合作区前海深港青年梦工场">前海深港青年梦工场2-101</a>
+					</span>
+					<span>
+						公交路线：最近的地铁站是1号线鲤鱼门（出站后打车8分钟）、11号线南山站（车程15分钟）
+					</span>
+				</div>
+			</div>
 		</div>
 		<!-- 单选 -->
 		<!-- <singleradio v-if="radioSingle" v-model="radioSingle" @radioMethods="radioMethods"></singleradio> -->
@@ -644,7 +654,7 @@ export default {
 			position:relative;
 			z-index:1;
 			margin-top:-85px;
-			padding-bottom:50px;
+			padding-bottom:30px;
 			.timeShaft{
 				width:100%;
 				padding:37px 0 0 19px;
@@ -908,13 +918,11 @@ export default {
 			.imgcontain{
 				width:100%;
 				padding:0 16px 0px 16px;
-				margin-top:45px;
+				margin-top:20px;
 				box-sizing: border-box;
 				img{
 					width:100%;
 					height:auto;
-					
-				
 				}
 			}
 			.tableContain{
@@ -987,6 +995,33 @@ export default {
 					height:auto;
 				}
 			}
+			.adressContain{
+				width:100%;
+				padding:20px 16px;
+				box-sizing: border-box;
+				.adress{
+					width:100%;
+					padding:20px;
+					box-sizing: border-box;
+					background:rgba(59,150,210,0.15);
+					border-radius:4px;
+					font-size:14px;
+					color:rgba(217,240,249,1);
+					line-height:20px;
+					display:flex;
+					flex-direction: column;
+					span{
+						&:nth-child(1){
+							margin-bottom:5px;
+						}
+					}
+					a{
+						color:#41B3F3;
+						text-decoration: none;
+					}
+				}
+			}
+			
 		}
 		.tosignup{
 			width:100%;
