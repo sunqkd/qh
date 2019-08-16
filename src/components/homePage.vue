@@ -382,7 +382,7 @@ export default {
 	mounted(){
 		var that = this;
 		
-		that.share();
+		this.share();
 		
 		var audio = $('audio').get(0);
             //   audio.play();
