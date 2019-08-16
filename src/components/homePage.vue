@@ -351,7 +351,6 @@ import active from './active.js';
 import singleradio from './singleradio';
 import checkradio from './checkradio';
 export default {
-	name: 'homePage', // 主页
 	data () {
 		return {
 			people:people,
