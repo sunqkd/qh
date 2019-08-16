@@ -376,9 +376,9 @@ export default {
 	},
 	created(){
 		// ModalHelper.afterOpen();
-		// setTimeout(()=>{
-		// 	this.share();
-		// },0)
+		setTimeout(()=>{
+			this.share();
+		},0)
 		this.listenBody(); // 页面滚动
 		this.getTableList();
 	},
@@ -501,7 +501,7 @@ export default {
 					url: "https://m.dyly.com/weixin/getWxConfig",
 					type: 'POST',
 					data: {
-						url: window.location.href
+						url: that.sharehref
 					}
 				}).success(function(data){
 					wx.config({
