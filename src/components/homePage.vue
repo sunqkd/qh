@@ -376,7 +376,6 @@ export default {
 	},
 	created(){
 		// ModalHelper.afterOpen();
-		
 		this.listenBody(); // 页面滚动
 		this.getTableList();
 	},
