@@ -381,9 +381,9 @@ export default {
 	},
 	mounted(){
 		var that = this;
-		
-		this.share();
-		
+		setTimeout(()=>{
+			that.share();
+		},0)
 		var audio = $('audio').get(0);
             //   audio.play();
 		$('.icon-video').click(function () {
@@ -570,7 +570,7 @@ export default {
 
 			}).then((res)=>{
 				if(res.data.status == 1){
-					this.tableList = res.data.data?res.data.data.reverse():[];
+					this.tableList = res.data.data?res.data.data:[];
 				}
 			})
 		}
