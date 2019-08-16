@@ -368,7 +368,7 @@ export default {
 			tableList:[], // 报名列表数据
 			domain:'https://app.dyly.com',
 			joinFlag:false, // 参会报名显示和隐藏
-			title:'“一带一路” 前海国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
+			title:'【邀请函】“一带一路” 前海国际路演中心官方报名入口-新一代信息技术专场路演邀请函',
 			decs:'路演时间：8月20日 路演地点：前海深港青年梦工场 智汇全球·追梦前海>>',
 			imgUrl:'https://m.dyly.com/register/app_h5/img/qh.jpg',
 			sharehref:'https://m.dyly.com/register/app_h5/qh/index.html'
