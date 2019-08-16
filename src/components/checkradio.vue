@@ -22,7 +22,7 @@
         data(){
             return {
                 ccData:[],
-                domain:'https://test1.dyly.com',
+                domain:'https://app.dyly.com',
             }
         },
         created(){

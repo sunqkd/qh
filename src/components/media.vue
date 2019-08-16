@@ -42,7 +42,7 @@
                     wechat:'', // 微信
                     phone:'', // 电话号码
                 },
-                domain:'https://test1.dyly.com',
+                domain:'https://app.dyly.com',
             }
         },
         created(){

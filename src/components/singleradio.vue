@@ -22,7 +22,7 @@
     export default {
         data(){
             return{
-                domain:'https://test1.dyly.com',
+                domain:'https://app.dyly.com',
                 ccData:[]
             }
         },

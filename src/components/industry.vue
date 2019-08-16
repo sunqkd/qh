@@ -107,7 +107,7 @@
                     phone:'', // 电话号码
                 },
                 radioSingle:false,
-			    domain:'https://test1.dyly.com',
+			    domain:'https://app.dyly.com',
             }
         },
         created(){
