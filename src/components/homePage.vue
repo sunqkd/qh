@@ -499,7 +499,7 @@ export default {
 			var top = $('.singupFormContain').offset().top; // 报名参与的高度
 			$('body,html').animate({
 				scrollTop: top - 100
-			}, 800);
+			}, 400);
 		},
 		share(){
 			var that = this;
