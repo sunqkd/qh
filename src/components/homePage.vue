@@ -487,9 +487,9 @@ export default {
 				var h = $(document).height();
 				if(scrollTop  > window.screen.height /4){ // 一个整屏幕高度
 					that.joinFlag = true;
-					if(h - scrollTop < 1400){
-						that.joinFlag = false;
-					}
+					// if(h - scrollTop < 1400){
+					// 	that.joinFlag = false;
+					// }
 				}else{
 					that.joinFlag = false;
 				}
