@@ -205,7 +205,7 @@
 						拟定举办时间
 					</div>
 				</div>
-				<div class="tableBody" v-for="(item,index) in active" :key="index">
+				<div class="tableBody" v-for="(item,index) in active" :key="index" :class="index == 0?'srecialColor':''">
 					<div>
 						{{index+1}}
 					</div>
@@ -877,6 +877,9 @@ export default {
 							justify-content: center;
 						}
 					}
+				}
+				.srecialColor{
+					color:rgba(255,255,255,0.3);
 				}
 			}
 			.committee{

@@ -6,10 +6,10 @@
                 <span @click="certain()">确定</span>
             </div>
             <ul class="buttonContain">
-                <li class="buttonItem" v-for="(item,index) in ccData" :key="index">
+                <li class="buttonItem" v-for="(item,index) in ccData" :key="index" :class="index == 0?'noClick':''">
                     <span>{{item.roadShowName}}</span>
                     <div class="radiocontain">
-                        <input type="checkbox" name="droneCheck" :value="item.roadShowName" :ids="item.id">
+                        <input type="checkbox" name="droneCheck" :value="item.roadShowName" :ids="item.id" :disabled="index == 0?true:false">
                         <i></i>
                     </div>
                 </li>
@@ -138,6 +138,9 @@
                             top:10px;
                         }
                     }
+                }
+                .noClick{
+                    color:rgba(255,255,255,0.3)
                 }
             }
         }
