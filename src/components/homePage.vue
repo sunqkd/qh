@@ -205,7 +205,7 @@
 						拟定举办时间
 					</div>
 				</div>
-				<div class="tableBody" v-for="(item,index) in active" :key="index" :class="index == 0?'srecialColor':''">
+				<div class="tableBody" v-for="(item,index) in active" :key="index" :class="index == 0 || index == 1?'srecialColor':''">
 					<div>
 						{{index+1}}
 					</div>
@@ -875,6 +875,7 @@ export default {
 						&:nth-child(3){
 							width:92px;
 							justify-content: center;
+							text-align: center;
 						}
 					}
 				}
